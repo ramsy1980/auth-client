@@ -1,5 +1,7 @@
+import React from "react";
 import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { InputField } from "../../components/input-field"
+import { Link } from '../../components/link';
 import * as Styled from './styled';
 
 export const Login = () => {
@@ -19,9 +21,9 @@ export const Login = () => {
                     </Styled.HeaderTitle>
                     <Styled.HeaderText>
                         {" Or "}
-                        <Styled.Link href="#">
+                        <Link to="#">
                             start your 14-day free trial
-                        </Styled.Link>
+                        </Link>
                     </Styled.HeaderText>
                 </Styled.Header>
                 <Styled.Form>
@@ -59,9 +61,9 @@ export const Login = () => {
                         </Styled.RememberMeCheckboxContainer>
 
                         <div className="text-sm">
-                            <Styled.Link href="#">
+                            <Link to="#">
                                 Forgot your password?
-                            </Styled.Link>
+                            </Link>
                         </div>
                     </Styled.RememberMeContainer>
 
