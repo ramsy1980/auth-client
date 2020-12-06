@@ -3,6 +3,7 @@ import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { InputField } from "../../components/input-field"
 import { Link } from '../../components/link';
 import * as Styled from './styled';
+import { Checkbox } from "../../components/checkbox";
 
 export const Login = () => {
     return (
@@ -53,18 +54,13 @@ export const Login = () => {
                     </Styled.InputContainer>
 
                     <Styled.RememberMeContainer>
-                        <Styled.RememberMeCheckboxContainer>
-                            <Styled.RememberMeCheckbox id="remember_me" name="remember_me" type="checkbox" />
-                            <Styled.RememberMeCheckboxLabel htmlFor="remember_me">
-                                Remember me
-                            </Styled.RememberMeCheckboxLabel>
-                        </Styled.RememberMeCheckboxContainer>
+                        <Checkbox id="remember_me" name="remember_me" label="Remember me"/>
 
-                        <div className="text-sm">
+                        <Styled.LinkContainer>
                             <Link to="#">
                                 Forgot your password?
                             </Link>
-                        </div>
+                        </Styled.LinkContainer>
                     </Styled.RememberMeContainer>
 
                     <div>
