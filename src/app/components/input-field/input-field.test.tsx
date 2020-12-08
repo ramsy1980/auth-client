@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InputField } from './';
+import { InputField } from '.';
 
 describe('InputField', () => {
     it('renders without crashing', () => {

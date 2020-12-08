@@ -1,6 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components'
-import { Login } from '../login';
+import { Login } from '../pages/login';
 
 const GlobalStyle = createGlobalStyle`
   body {

@@ -1,9 +1,9 @@
 import React from "react";
 import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
-import { InputField } from "../../components/input-field"
-import { Link } from '../../components/link';
+import { InputField } from "../../app/components/input-field"
+import { Link } from '../../app/components/link';
 import * as Styled from './styled';
-import { Checkbox } from "../../components/checkbox";
+import { Checkbox } from "../../app/components/checkbox";
 
 export const Login = () => {
     return (
