@@ -1,9 +1,9 @@
 import React from "react";
 import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
-import { InputField } from "../../app/components/input-field"
-import { Link } from '../../app/components/link';
+import { InputField } from "../../components/input-field"
+import { Link } from '../../components/link';
 import * as Styled from './styled';
-import { Checkbox } from "../../app/components/checkbox";
+import { Checkbox } from "../../components/checkbox";
 
 export const Login = () => {
     return (
@@ -22,7 +22,7 @@ export const Login = () => {
                     </Styled.HeaderTitle>
                     <Styled.HeaderText>
                         {" Or "}
-                        <Link to="#">
+                        <Link to="/register">
                             start your 14-day free trial
                         </Link>
                     </Styled.HeaderText>
