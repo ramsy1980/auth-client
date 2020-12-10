@@ -1,6 +1,12 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components'
-import { Login } from '../pages/login';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { Login } from './pages/login';
+import { Register } from './pages/register';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -11,10 +17,20 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <div>
+    <Router>
       <GlobalStyle />
-      <Login />
-    </div>
+      <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
