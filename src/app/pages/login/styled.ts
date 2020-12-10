@@ -74,9 +74,6 @@ export const Link = styled.a`
         color: rgba(99, 102, 241, var(--text-opacity)); // text-indigo-500
     }
 `
-export const Form = styled.form`
-    margin-top: 1rem;
-`
 
 export const InputContainer = styled.div`
     --shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -118,10 +115,12 @@ export const Button = styled.button`
     &:hover {
         --bg-opacity: 1; // bg-indigo-700
         background-color: rgba(67, 56, 202, var(--bg-opacity)); // bg-indigo-700
+        transition: all, 0.3s;
 
         & > svg {
             --text-opacity: 1; // text-indigo-300
             color: rgba(165, 180, 252, var(--text-opacity)); // text-indigo-300
+            transition: all, 0.3s;
         }
     }
 `
@@ -131,6 +130,8 @@ export const ButtonIcon = styled(FontAwesomeIcon)`
     color: rgba(99, 102, 241, var(--text-opacity)); // text-indigo-500
     height: 1.25rem;
     width: 1.25rem;
+    transition: all, 0.2s;
+
 `
 
 export const LinkContainer = styled.div`

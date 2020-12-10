@@ -4,6 +4,7 @@ import { InputField } from "../../components/input-field"
 import { Link } from '../../components/link';
 import * as Styled from './styled';
 import { Checkbox } from "../../components/checkbox";
+import { Form } from "../../components/form";
 
 export const Login = () => {
     return (
@@ -27,7 +28,7 @@ export const Login = () => {
                         </Link>
                     </Styled.HeaderText>
                 </Styled.Header>
-                <Styled.Form>
+                <Form>
                     <input type="hidden" name="remember" value="true" />
                     <Styled.InputContainer>
                         <InputField
@@ -69,7 +70,7 @@ export const Login = () => {
                             <span>Sign in</span>
                         </Styled.Button>
                     </div>
-                </Styled.Form>
+                </Form>
             </Styled.LoginContainer>
         </Styled.Container>
     )
