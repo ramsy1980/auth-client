@@ -1,14 +1,12 @@
-import { FunctionComponent, HTMLProps } from 'react';
+import { FunctionComponent } from 'react';
+import { LinkProps } from 'react-router-dom';
 import StyledLink from './styled';
 
-interface LinkProps extends HTMLProps<HTMLAnchorElement> {
-    to: string
-}
-
 export const Link: FunctionComponent<LinkProps> = (props) => {
-    const { children, to, ...rest } = props;
+    const { children, ...rest } = props;
+
     return (
-        <StyledLink href={to} {...rest}>
+        <StyledLink {...rest}>
             {children}
         </StyledLink>
     )
