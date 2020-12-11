@@ -28,7 +28,7 @@ export const InputField = (props: InputProps) => {
                     </Styled.LabelSrOnly>)
             }
 
-            <Styled.Input
+            <Styled.StyledInput
                 autoComplete={autoComplete}
                 className={className}
                 id={id}

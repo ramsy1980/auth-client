@@ -17,7 +17,7 @@ export const LabelSrOnly = styled.label`
     border-width: 0;
 `
 
-export const Input = styled.input`
+export const StyledInput = styled.input`
     width: 100%;
     appearance: none;
     --text-opacity: 1; // text-gray-900
