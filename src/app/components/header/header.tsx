@@ -12,7 +12,6 @@ export const Header = () => {
                         icon={faRocket}
                         size="3x"
                     />
-
                 </Styled.HeaderIconContainer>
                 <Styled.HeaderTitle>
                     Sign in to your account
