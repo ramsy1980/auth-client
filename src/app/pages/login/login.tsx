@@ -7,54 +7,53 @@ import { Checkbox } from "../../components/checkbox";
 import { Form } from "../../components/form";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
+import { Container } from "../../components/container";
 
 export const Login = () => {
     return (
-        <Styled.Container>
-            <Styled.LoginContainer>
-                <Header />
-                <Form>
-                    <Styled.InputContainer>
-                        <InputField
-                            id="email-address"
-                            name="email"
-                            type="email"
-                            autoComplete="email"
-                            required={true}
-                            label="Email address"
-                            placeholder="Email address"
-                            roundedBorder="top"
-                            hideBorder="bottom"
-                        />
-                        <InputField
-                            id="password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
-                            required={true}
-                            label="Password"
-                            placeholder="Password"
-                            roundedBorder="bottom"
-                        />
-                    </Styled.InputContainer>
-
-                    <Styled.RememberMeContainer>
-                        <Checkbox id="remember_me" name="remember_me" label="Remember me"/>
-
-                        <Styled.LinkContainer>
-                            <Link to="#">
-                                Forgot your password?
-                            </Link>
-                        </Styled.LinkContainer>
-                    </Styled.RememberMeContainer>
-
-                    <Button 
-                        type="submit" 
-                        title="Sign in"
-                        icon={faLock}
+        <Container>
+            <Header />
+            <Form>
+                <Styled.InputContainer>
+                    <InputField
+                        id="email-address"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required={true}
+                        label="Email address"
+                        placeholder="Email address"
+                        roundedBorder="top"
+                        hideBorder="bottom"
                     />
-                </Form>
-            </Styled.LoginContainer>
-        </Styled.Container>
+                    <InputField
+                        id="password"
+                        name="password"
+                        type="password"
+                        autoComplete="current-password"
+                        required={true}
+                        label="Password"
+                        placeholder="Password"
+                        roundedBorder="bottom"
+                    />
+                </Styled.InputContainer>
+
+                <Styled.RememberMeContainer>
+                    <Checkbox id="remember_me" name="remember_me" label="Remember me" />
+
+                    <Styled.LinkContainer>
+                        <Link to="#">
+                            Forgot your password?
+                            </Link>
+                    </Styled.LinkContainer>
+                </Styled.RememberMeContainer>
+
+                <Button
+                    type="submit"
+                    title="Sign in"
+                    icon={faLock}
+                />
+            </Form>
+        </Container>
     )
 }

@@ -1,32 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    --bg-opacity: 1;
-    align-items: center;
-    background-color: rgba(249, 250, 251, var(--bg-opacity)); // bg-gray-50
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    @media (min-width: 1024px) {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-    @media (min-width: 640px) {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-`
-
-export const LoginContainer = styled.div`
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    max-width: 28rem;
-    width: 100%;
-`
-
 export const Link = styled.a`
     --text-opacity: 1;
     color: rgba(79, 70, 229, var(--text-opacity)); // text-indigo-600
@@ -43,6 +16,7 @@ export const InputContainer = styled.div`
     --ring-offset-shadow: 0 0 #0000;
     --ring-shadow: 0 0 #0000;
     box-shadow: var(--ring-offset-shadow, 0 0 #0000), var(--ring-shadow, 0 0 #0000), var(--shadow);
+    border-radius: 0.375rem;
 `
 
 export const RememberMeContainer = styled.div`
