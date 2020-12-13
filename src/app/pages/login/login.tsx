@@ -1,35 +1,19 @@
 import React from "react";
-import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { InputField } from "../../components/input-field"
 import { Link } from '../../components/link';
 import * as Styled from './styled';
 import { Checkbox } from "../../components/checkbox";
 import { Form } from "../../components/form";
+import { Button } from "../../components/button";
+import { Header } from "../../components/header";
 
 export const Login = () => {
     return (
         <Styled.Container>
             <Styled.LoginContainer>
-                <Styled.Header>
-                    <Styled.HeaderIconContainer>
-                        <Styled.HeaderIcon 
-                        icon={faRocket}
-                        size="3x"
-                        />
-                            
-                    </Styled.HeaderIconContainer>
-                    <Styled.HeaderTitle>
-                        Sign in to your account
-                    </Styled.HeaderTitle>
-                    <Styled.HeaderText>
-                        {" Or "}
-                        <Link to="/register">
-                            start your 14-day free trial
-                        </Link>
-                    </Styled.HeaderText>
-                </Styled.Header>
+                <Header />
                 <Form>
-                    <input type="hidden" name="remember" value="true" />
                     <Styled.InputContainer>
                         <InputField
                             id="email-address"
@@ -64,12 +48,11 @@ export const Login = () => {
                         </Styled.LinkContainer>
                     </Styled.RememberMeContainer>
 
-                    <div>
-                        <Styled.Button type="submit">
-                             <Styled.ButtonIcon icon={faLock} size="1x" />
-                            <span>Sign in</span>
-                        </Styled.Button>
-                    </div>
+                    <Button 
+                        type="submit" 
+                        title="Sign in"
+                        icon={faLock}
+                    />
                 </Form>
             </Styled.LoginContainer>
         </Styled.Container>
