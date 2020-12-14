@@ -1,5 +1,5 @@
 import React from "react";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { InputField } from "../../components/input-field"
 import { Link } from '../../components/link';
 import * as Styled from './styled';
@@ -12,7 +12,12 @@ import { Container } from "../../components/container";
 export const Login = () => {
     return (
         <Container>
-            <Header />
+            <Header
+                icon={faRocket}
+                title="Sign in to your account"
+                linkText="start your 14-day free trial"
+                linkTo="/register"
+            />
             <Form>
                 <Styled.InputContainer>
                     <InputField
