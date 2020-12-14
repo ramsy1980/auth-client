@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export interface RoundedBorderProps {
-    roundedBorder?: "top" | "bottom" | "both" | "none"
+    roundedBorder?: "top-left" | "top-right" | "top" | "bottom-left" | "bottom-right" | "bottom" | "both" | "none"
     hideBorder?: "top" | "bottom"
 }
 
@@ -39,10 +39,10 @@ export const StyledInput = styled.input`
     font-size: 1rem;
     line-height: 1.5rem;
 
-    border-top-left-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "top" || props.roundedBorder === "both" ? "0.375rem" : 0};
-    border-top-right-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "top" || props.roundedBorder === "both" ? "0.375rem" : 0};
-    border-bottom-left-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "bottom" || props.roundedBorder === "both" ? "0.375rem" : 0};
-    border-bottom-right-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "bottom" || props.roundedBorder === "both" ? "0.375rem" : 0};
+    border-top-left-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "top-left" ? "0.375rem" : props.roundedBorder === "top" || props.roundedBorder === "both" ? "0.375rem" : 0};
+    border-top-right-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "top-right" ? "0.375rem" : props.roundedBorder === "top" || props.roundedBorder === "both" ? "0.375rem" : 0};
+    border-bottom-left-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "bottom-left" ? "0.375rem" : props.roundedBorder === "bottom" || props.roundedBorder === "both" ? "0.375rem" : 0};
+    border-bottom-right-radius: ${(props: RoundedBorderProps) => props.roundedBorder === "bottom-right" ? "0.375rem" : props.roundedBorder === "bottom" || props.roundedBorder === "both" ? "0.375rem" : 0};
 
     margin-top: ${(props: RoundedBorderProps) => props.hideBorder === "top" ? "-1px" : "inherit"};
     margin-bottom: ${(props: RoundedBorderProps) => props.hideBorder === "bottom" ? "-1px" : "inherit"};

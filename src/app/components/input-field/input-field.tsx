@@ -1,7 +1,6 @@
 import * as Styled from './styled';
-import { RoundedBorderProps } from './styled';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, RoundedBorderProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, Styled.RoundedBorderProps {
     label?: string;
 }
 
