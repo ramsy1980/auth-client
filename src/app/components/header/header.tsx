@@ -1,25 +1,33 @@
-import { faRocket } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import React, { FunctionComponent } from 'react';
 import { Link } from '../link';
 import * as Styled from './styled';
 
-export const Header = () => {
+interface HeaderProps {
+    icon: IconDefinition;
+    title: string;
+    linkTo: string;
+    linkText: string;
+}
+
+export const Header: FunctionComponent<HeaderProps> = (props) => {
+    const { icon, linkText, linkTo, title } = props;
     return (
         <React.Fragment>
             <Styled.Header>
                 <Styled.HeaderIconContainer>
                     <Styled.HeaderIcon
-                        icon={faRocket}
+                        icon={icon}
                         size="3x"
                     />
                 </Styled.HeaderIconContainer>
                 <Styled.HeaderTitle>
-                    Sign in to your account
-                    </Styled.HeaderTitle>
+                    {title}
+                </Styled.HeaderTitle>
                 <Styled.HeaderText>
                     {" Or "}
-                    <Link to="/register">
-                        start your 14-day free trial
+                    <Link to={linkTo}>
+                        {linkText}
                     </Link>
                 </Styled.HeaderText>
             </Styled.Header>
