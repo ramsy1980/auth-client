@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form } from './';
+import { Form } from '.';
 
 describe('Form', () => {
     it('renders without crashing', () => {
