@@ -66,7 +66,11 @@ export const Register = () => {
                 </Styled.InputContainer>
 
                 <Styled.AcceptTOSContainer>
-                    <Checkbox id="newsletter" name="newsletter" label="Receive latest updates" />
+                    <Checkbox 
+                    id="newsletter" 
+                    name="newsletter" 
+                    label="Subscribe to our newsletter to receive latest updates" 
+                    />
                     <Styled.TOSText>
                         By clicking <strong>Start trial</strong>,
                         you agree to our <Link to="#">terms of service</Link> and
