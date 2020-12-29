@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { InputField } from "../../components/input-field"
 import * as Styled from './styled';
@@ -8,8 +8,13 @@ import { Header } from "../../components/header";
 import { Container } from "../../components/container";
 import { Link } from '../../components/link';
 import { Checkbox } from "../../components/checkbox";
+import { AuthenticationService } from "../../../core/infrastructure";
 
-export const Register = () => {
+interface RegisterProps {
+    service: AuthenticationService
+}
+
+export const Register: FunctionComponent<RegisterProps> = (props) => {
     return (
         <Container>
             <Header
