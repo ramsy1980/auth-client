@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { InputField } from "../../components/input-field"
 import { Link } from '../../components/link';
@@ -8,8 +8,23 @@ import { Form } from "../../components/form";
 import { Button } from "../../components/button";
 import { Header } from "../../components/header";
 import { Container } from "../../components/container";
+import { AuthenticationService } from "../../../core/infrastructure";
 
-export const Login = () => {
+
+interface LoginProps {
+    service: AuthenticationService
+}
+
+export const Login: FunctionComponent<LoginProps> = (props) => {
+
+    const {service} = props;
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        console.log('Submitting form', service)
+    }
+
     return (
         <Container>
             <Header
@@ -18,7 +33,7 @@ export const Login = () => {
                 linkText="start your 14-day free trial"
                 linkTo="/register"
             />
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Styled.InputContainer>
                     <InputField
                         id="email-address"
