@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import * as Styled from './styled';
 
-interface FormProps {
+interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
 
 }
 
