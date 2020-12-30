@@ -5,8 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { Login } from './pages/login';
-import { Register } from './pages/register';
+import { Login, Register, Profile } from './pages';
 import { AxiosHttpClient } from '../core/data';
 import { AuthenticationService } from '../core/infrastructure';
 
@@ -34,6 +33,9 @@ function App() {
         </Route>
         <Route path="/register">
           <Register service={service} />
+        </Route>
+        <Route path="/profile">
+          <Profile service={service} />
         </Route>
       </Switch>
     </Router>
