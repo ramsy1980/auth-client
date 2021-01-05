@@ -1,28 +1,35 @@
 import React, { FunctionComponent } from "react";
 import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
-import { InputField } from "../../components/input-field"
-import { Link } from '../../components/link';
+import { useHistory } from 'react-router-dom';
+import { Checkbox, Form, Button, Header, Container, Link, InputField } from "../../components";
 import * as Styled from './styled';
-import { Checkbox } from "../../components/checkbox";
-import { Form } from "../../components/form";
-import { Button } from "../../components/button";
-import { Header } from "../../components/header";
-import { Container } from "../../components/container";
-import { AuthenticationService } from "../../../core/infrastructure";
+import { useAuth } from "../../hooks";
+
+interface LoginProps {}
+
+export const Login: FunctionComponent<LoginProps> = () => {
 
 
-interface LoginProps {
-    service: AuthenticationService
-}
+    const { auth } = useAuth();
+    const history = useHistory();
 
-export const Login: FunctionComponent<LoginProps> = (props) => {
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
-    const {service} = props;
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        console.log('Submitting form', service)
+
+        try {
+            await auth.login({ email, password })
+
+            setEmail('');
+            setPassword('')
+
+            history.push('/profile')
+        }
+        catch (err) {
+            console.error(err)
+        }
     }
 
     return (
@@ -45,6 +52,8 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
                         placeholder="Email address"
                         roundedBorder="top"
                         hideBorder="bottom"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                     />
                     <InputField
                         id="password"
@@ -55,6 +64,8 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
                         label="Password"
                         placeholder="Password"
                         roundedBorder="bottom"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </Styled.InputContainer>
 
@@ -64,7 +75,7 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
                     <Styled.LinkContainer>
                         <Link to="#">
                             Forgot your password?
-                            </Link>
+                        </Link>
                     </Styled.LinkContainer>
                 </Styled.RememberMeContainer>
 
