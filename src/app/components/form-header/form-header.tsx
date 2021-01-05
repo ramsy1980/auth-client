@@ -3,34 +3,34 @@ import React, { FunctionComponent } from 'react';
 import { Link } from '../link';
 import * as Styled from './styled';
 
-interface HeaderProps {
+interface FormHeaderProps {
     icon: IconDefinition;
     title: string;
     linkTo: string;
     linkText: string;
 }
 
-export const Header: FunctionComponent<HeaderProps> = (props) => {
+export const FormHeader: FunctionComponent<FormHeaderProps> = (props) => {
     const { icon, linkText, linkTo, title } = props;
     return (
         <React.Fragment>
-            <Styled.Header>
-                <Styled.HeaderIconContainer>
-                    <Styled.HeaderIcon
+            <Styled.FormHeader>
+                <Styled.FormHeaderIconContainer>
+                    <Styled.FormHeaderIcon
                         icon={icon}
                         size="3x"
                     />
-                </Styled.HeaderIconContainer>
-                <Styled.HeaderTitle>
+                </Styled.FormHeaderIconContainer>
+                <Styled.FormHeaderTitle>
                     {title}
-                </Styled.HeaderTitle>
-                <Styled.HeaderText>
+                </Styled.FormHeaderTitle>
+                <Styled.FormHeaderText>
                     {" Or "}
                     <Link to={linkTo}>
                         {linkText}
                     </Link>
-                </Styled.HeaderText>
-            </Styled.Header>
+                </Styled.FormHeaderText>
+            </Styled.FormHeader>
         </React.Fragment>
     )
 }

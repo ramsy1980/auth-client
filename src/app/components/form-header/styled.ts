@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
-export const Header = styled.div`
+export const FormHeader = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
 `
-export const HeaderTitle = styled.h2`
+export const FormHeaderTitle = styled.h2`
     --text-opacity: 1;
     color: rgba(17, 24, 39, var(--text-opacity)); // text-gray-900
     font-size: 1.875rem;  // 3xl
@@ -17,18 +17,18 @@ export const HeaderTitle = styled.h2`
     margin-bottom: 0;
     text-align: center;
 `
-export const HeaderIconContainer = styled.div`
+export const FormHeaderIconContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: center;
 `
-export const HeaderIcon = styled(FontAwesomeIcon)`
+export const FormHeaderIcon = styled(FontAwesomeIcon)`
     height: 3rem;
     --text-opacity: 1;
     color: rgba(79, 70, 229, var(--text-opacity)); // text-indigo-600
 `
 
-export const HeaderText = styled.p`
+export const FormHeaderText = styled.p`
     --text-opacity: 1;
     color: rgba(75, 85, 99, var(--text-opacity)); // text-gray-600
     font-size: 0.875rem;  // sm

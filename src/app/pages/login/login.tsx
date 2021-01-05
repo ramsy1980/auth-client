@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
-import { Checkbox, Form, Button, Header, Container, Link, InputField } from "../../components";
+import { Checkbox, Form, Button, FormHeader, Container, Link, InputField } from "../../components";
 import * as Styled from './styled';
 import { useAuth } from "../../hooks";
 
@@ -34,7 +34,7 @@ export const Login: FunctionComponent<LoginProps> = () => {
 
     return (
         <Container>
-            <Header
+            <FormHeader
                 icon={faRocket}
                 title="Sign in to your account"
                 linkText="start your 14-day free trial"
