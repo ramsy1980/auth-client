@@ -1,28 +1,42 @@
-import React, { FunctionComponent } from "react";
-import { AuthenticationService } from "../../../core/infrastructure";
+import { FunctionComponent } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import useSWR from 'swr'
+import { useAuth } from "../../hooks";
 
-interface ProfileProps {
-    service: AuthenticationService;
-}
+interface ProfileProps { }
 
-export const Profile: FunctionComponent<ProfileProps> = (props) => {
+export const Profile: FunctionComponent<ProfileProps> = () => {
 
-    const { service } = props;
+    const history = useHistory();
+    const { auth } = useAuth();
+
+    const fetcher = () => auth.currentUser().then((res) => res.data)
+
+    const { data, error } = useSWR('/api/user/currentUser', fetcher)
 
     const handleLogout = async () => {
-        try { await service.logout(); }
-        catch (err) { console.error(err) }
+        try {
+            await auth.logout();
+            history.push('/login');
+        }
+        catch (err) {
+            console.error(err)
+        }
     }
 
-    React.useEffect(() => {
-        service.currentUser()
-        .then(res => console.log(res))
-        .catch(err => console.error(err))
-    }, [])
+    if (error) return <Redirect to="/login" />
+    if (!data) return <div>loading...</div>
 
     return (
         <div>
             <h1>Logged in</h1>
+            <small>
+                <pre>
+                    <code>
+                        {JSON.stringify(data, undefined, 2)}
+                    </code>
+                </pre>
+            </small>
             <button onClick={handleLogout}>Logout</button>
         </div>
     )
