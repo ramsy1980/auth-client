@@ -8,7 +8,7 @@ describe('Register', () => {
         const div = document.createElement('div');
         ReactDOM.render(
             <MemoryRouter>
-                <Register />
+                <Register service={jest.fn() as any}/>
             </MemoryRouter>
             , div);
         ReactDOM.unmountComponentAtNode(div);

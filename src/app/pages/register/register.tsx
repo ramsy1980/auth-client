@@ -4,26 +4,56 @@ import { InputField } from "../../components/input-field"
 import * as Styled from './styled';
 import { Form } from "../../components/form";
 import { Button } from "../../components/button";
-import { Header } from "../../components/header";
+import { FormHeader } from "../../components/form-header";
 import { Container } from "../../components/container";
 import { Link } from '../../components/link';
 import { Checkbox } from "../../components/checkbox";
+import { useRequest } from "../../hooks";
 import { AuthenticationService } from "../../../core/infrastructure";
+import { useHistory } from "react-router-dom";
+import { User } from "../../../../../../core/domain/entities";
 
 interface RegisterProps {
     service: AuthenticationService
 }
 
 export const Register: FunctionComponent<RegisterProps> = (props) => {
+
+    const { service } = props;
+
+    const [email, setEmail] = React.useState('');
+    const [firstName, setFirstName] = React.useState('');
+    const [lastName, setLastName] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const history = useHistory();
+    const { doRequest, errors, loading } = useRequest({
+        request: () => service.register({
+            email,
+            firstName,
+            lastName,
+            password,
+        }),
+        onSuccess: ({ email }: User) => {
+            history.push(`/emails/${email}/confirm`)
+        }
+    });
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        doRequest();
+    }
+
     return (
         <Container>
-            <Header
-                icon={faRocket}
-                title="Start your 14-day free trial"
-                linkText="sign in to your account"
-                linkTo="/login"
-            />
-            <Form>
+            <Form onSubmit={handleSubmit}>
+                <FormHeader
+                    icon={faRocket}
+                    title="Start your 14-day free trial"
+                    linkText="sign in to your account"
+                    linkTo="/login"
+                />
                 <Styled.InputContainer>
                     <InputField
                         id="first-name"
@@ -35,6 +65,8 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                         placeholder="First name"
                         roundedBorder="top"
                         hideBorder="bottom"
+                        onChange={e => setFirstName(e.target.value)}
+                        onBlur={e => setFirstName(e.target.value.trim())}
                     />
                     <InputField
                         id="last-name"
@@ -45,6 +77,8 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                         label="Last name"
                         placeholder="Last name"
                         hideBorder="bottom"
+                        onChange={e => setLastName(e.target.value)}
+                        onBlur={e => setLastName(e.target.value.trim())}
                     />
 
                     <InputField
@@ -56,6 +90,8 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                         label="Email"
                         placeholder="Email"
                         hideBorder="bottom"
+                        onChange={e => setEmail(e.target.value)}
+                        onBlur={e => setEmail(e.target.value.trim())}
                     />
                     <InputField
                         id="password"
@@ -66,15 +102,17 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                         label="Password"
                         placeholder="Password"
                         roundedBorder="bottom"
+                        onChange={e => setPassword(e.target.value)}
+                        onBlur={e => setPassword(e.target.value.trim())}
                     />
 
                 </Styled.InputContainer>
 
                 <Styled.AcceptTOSContainer>
-                    <Checkbox 
-                    id="newsletter" 
-                    name="newsletter" 
-                    label="Subscribe to our newsletter to receive latest updates" 
+                    <Checkbox
+                        id="newsletter"
+                        name="newsletter"
+                        label="Subscribe to our newsletter to receive latest updates"
                     />
                     <Styled.TOSText>
                         By clicking <strong>Start trial</strong>,
@@ -84,10 +122,13 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                     </Styled.TOSText>
                 </Styled.AcceptTOSContainer>
 
+                {errors}
+
                 <Button
                     type="submit"
                     title="Start trial"
                     icon={faRocket}
+                    isLoading={loading}
                 />
             </Form>
         </Container>
