@@ -1,9 +1,9 @@
 import React from 'react';
 
-interface UseRequestAttrs<R = any, S = any, E = Error> {
-  request: (payload?: R) => Promise<R>;
-  onSuccess: (payload: S) => void;
-  onError?: (payload: E) => void;
+interface UseRequestAttrs {
+  request: (payload: any) => Promise<any>;
+  onSuccess: (result: any) => void;
+  onError?: (result: any) => void;
 }
 
 export const useRequest = <R extends {}>({ request, onSuccess, onError }: UseRequestAttrs) => {
@@ -30,7 +30,7 @@ export const useRequest = <R extends {}>({ request, onSuccess, onError }: UseReq
         <div className="alert alert-danger">
           <h4>Ooops.....</h4>
           <ul className="my-0">
-            <li key={err.message}>{err.message}</li>
+            <li key={err.message}>{err.response.data.message}</li>
           </ul>
         </div>,
       );
