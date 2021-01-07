@@ -1,22 +1,25 @@
 import { FunctionComponent } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import useSWR from 'swr'
-import { useAuth } from "../../hooks";
+import { AuthenticationService } from "../../../core/infrastructure";
 
-interface ProfileProps { }
+interface ProfileProps {
+    service: AuthenticationService
+}
 
-export const Profile: FunctionComponent<ProfileProps> = () => {
+export const Profile: FunctionComponent<ProfileProps> = (props) => {
+
+    const { service } = props;
 
     const history = useHistory();
-    const { auth } = useAuth();
 
-    const fetcher = () => auth.currentUser().then((res) => res.data)
+    const fetcher = () => service.currentUser().then((res) => res.data)
 
     const { data, error } = useSWR('/api/user/currentUser', fetcher)
 
     const handleLogout = async () => {
         try {
-            await auth.logout();
+            await service.logout();
             history.push('/login');
         }
         catch (err) {
