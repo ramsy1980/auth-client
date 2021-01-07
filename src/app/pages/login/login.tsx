@@ -3,44 +3,44 @@ import { faLock, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from 'react-router-dom';
 import { Checkbox, Form, Button, FormHeader, Container, Link, InputField } from "../../components";
 import * as Styled from './styled';
-import { useAuth } from "../../hooks";
+import { useRequest } from "../../hooks";
+import { AuthenticationService } from "../../../core/infrastructure";
 
-interface LoginProps {}
+interface LoginProps {
+    service: AuthenticationService
+}
 
-export const Login: FunctionComponent<LoginProps> = () => {
+export const Login: FunctionComponent<LoginProps> = (props) => {
 
-
-    const { auth } = useAuth();
-    const history = useHistory();
+    const { service } = props;
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
+    const history = useHistory();
+
+    const { doRequest, errors, loading } = useRequest<AuthenticationService['login']>({
+        request: () => service.login({ email, password }),
+        onSuccess: () => {
+            history.push('/profile')
+        },
+    });
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        try {
-            await auth.login({ email, password })
-
-            setEmail('');
-            setPassword('')
-
-            history.push('/profile')
-        }
-        catch (err) {
-            console.error(err)
-        }
+        doRequest()
     }
 
     return (
         <Container>
-            <FormHeader
-                icon={faRocket}
-                title="Sign in to your account"
-                linkText="start your 14-day free trial"
-                linkTo="/register"
-            />
             <Form onSubmit={handleSubmit}>
+                <FormHeader
+                    icon={faRocket}
+                    title="Sign in to your account"
+                    linkText="start your 14-day free trial"
+                    linkTo="/register"
+                />
                 <Styled.InputContainer>
                     <InputField
                         id="email-address"
@@ -83,8 +83,10 @@ export const Login: FunctionComponent<LoginProps> = () => {
                     type="submit"
                     title="Sign in"
                     icon={faLock}
+                    isLoading={loading}
                 />
             </Form>
+            {errors}
         </Container>
     )
 }
