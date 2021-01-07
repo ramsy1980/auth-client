@@ -50,60 +50,64 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
             <Form onSubmit={handleSubmit}>
                 <FormHeader
                     icon={faRocket}
-                    title="Start your 14-day free trial"
                     linkText="sign in to your account"
                     linkTo="/login"
+                    title="Start your 14-day free trial"
                 />
                 <Styled.InputContainer>
                     <InputField
-                        id="first-name"
-                        name="first-name"
-                        type="text"
                         autoComplete="given-name"
-                        required={true}
-                        label="First name"
-                        placeholder="First name"
-                        roundedBorder="top"
                         hideBorder="bottom"
-                        onChange={e => setFirstName(e.target.value)}
+                        id="first-name"
+                        label="First name"
+                        name="first-name"
                         onBlur={e => setFirstName(e.target.value.trim())}
+                        onChange={e => setFirstName(e.target.value)}
+                        placeholder="First name"
+                        required={true}
+                        roundedBorder="top"
+                        type="text"
+                        value={firstName}
                     />
                     <InputField
-                        id="last-name"
-                        name="last-name"
-                        type="string"
                         autoComplete="family-name"
-                        required={true}
-                        label="Last name"
-                        placeholder="Last name"
                         hideBorder="bottom"
-                        onChange={e => setLastName(e.target.value)}
+                        id="last-name"
+                        label="Last name"
+                        name="last-name"
                         onBlur={e => setLastName(e.target.value.trim())}
+                        onChange={e => setLastName(e.target.value)}
+                        placeholder="Last name"
+                        required={true}
+                        type="string"
+                        value={lastName}
                     />
 
                     <InputField
-                        id="email"
-                        name="email"
-                        type="email"
                         autoComplete="email"
-                        required={true}
-                        label="Email"
-                        placeholder="Email"
                         hideBorder="bottom"
-                        onChange={e => setEmail(e.target.value)}
+                        id="email"
+                        label="Email"
+                        name="email"
                         onBlur={e => setEmail(e.target.value.trim())}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required={true}
+                        type="email"
+                        value={email}
                     />
                     <InputField
-                        id="password"
-                        name="password"
-                        type="password"
                         autoComplete="current-password"
-                        required={true}
+                        id="password"
                         label="Password"
-                        placeholder="Password"
-                        roundedBorder="bottom"
+                        name="password"
+                        onBlur={e => setPassword(e.target.value.trim)}
                         onChange={e => setPassword(e.target.value)}
-                        onBlur={e => setPassword(e.target.value.trim())}
+                        placeholder="Password"
+                        required={true}
+                        roundedBorder="bottom"
+                        type="password"
+                        value={password}
                     />
 
                 </Styled.InputContainer>
@@ -111,8 +115,8 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                 <Styled.AcceptTOSContainer>
                     <Checkbox
                         id="newsletter"
-                        name="newsletter"
                         label="Subscribe to our newsletter to receive latest updates"
+                        name="newsletter"
                     />
                     <Styled.TOSText>
                         By clicking <strong>Start trial</strong>,
@@ -125,10 +129,10 @@ export const Register: FunctionComponent<RegisterProps> = (props) => {
                 {errors}
 
                 <Button
-                    type="submit"
-                    title="Start trial"
                     icon={faRocket}
                     isLoading={loading}
+                    title="Start trial"
+                    type="submit"
                 />
             </Form>
         </Container>
