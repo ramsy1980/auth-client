@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export interface RoundedBorderProps {
@@ -78,4 +79,10 @@ export const StyledInput = styled.input`
         border-color: rgba(99, 102, 241, var(--border-opacity));
         box-shadow: var(--ring-offset-shadow), var(--ring-shadow), var(--shadow, 0 0 #0000);
     }
+`
+
+export const PasswordIcon = styled(FontAwesomeIcon)`
+    position: relative;
+    left: calc(100% - 25px);
+    bottom: 1.75rem;
 `

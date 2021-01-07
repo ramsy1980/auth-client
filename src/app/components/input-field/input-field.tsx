@@ -1,3 +1,5 @@
+import React from 'react';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import * as Styled from './styled';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, Styled.RoundedBorderProps {
@@ -14,19 +16,42 @@ export const InputField = (props: InputProps) => {
         name,
         placeholder,
         required,
-        type,
+        type: fieldType,
         ...rest
     } = props;
 
+
+    const [type, setType] = React.useState(fieldType);
+
+    const isPasswordField = fieldType === 'password';
+    const isPasswordHidden = type === 'password';
+
+    const togglePassword = () => {
+        setType(prevState => prevState === 'password' ? 'text' : fieldType)
+    }
+
+    const renderLabel = () => {
+        if (label)
+            return <Styled.LabelSrOnly htmlFor={id}>
+                {label}
+            </Styled.LabelSrOnly>
+            
+        return null;
+    }
+
+    const renderIcon = () => {
+        if (isPasswordField)
+            return <Styled.PasswordIcon
+                icon={isPasswordHidden ? faEye : faEyeSlash}
+                onClick={togglePassword}
+            />
+
+        return null;
+    }
+
     return (
         <div>
-            {
-                label && (
-                    <Styled.LabelSrOnly htmlFor={id}>
-                        {label}
-                    </Styled.LabelSrOnly>)
-            }
-
+            {renderLabel()}
             <Styled.StyledInput
                 autoComplete={autoComplete}
                 className={className}
@@ -37,6 +62,7 @@ export const InputField = (props: InputProps) => {
                 type={type}
                 {...rest}
             />
+            {renderIcon()}
         </div>
     )
 }
