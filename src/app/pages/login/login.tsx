@@ -37,35 +37,37 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
             <Form onSubmit={handleSubmit}>
                 <FormHeader
                     icon={faRocket}
-                    title="Sign in to your account"
                     linkText="start your 14-day free trial"
                     linkTo="/register"
+                    title="Sign in to your account"
                 />
                 <Styled.InputContainer>
                     <InputField
-                        id="email-address"
-                        name="email"
-                        type="email"
                         autoComplete="email"
-                        required={true}
-                        label="Email address"
-                        placeholder="Email address"
-                        roundedBorder="top"
                         hideBorder="bottom"
-                        value={email}
+                        id="email-address"
+                        label="Email address"
+                        name="email"
+                        onBlur={e => setEmail(e.target.value)}
                         onChange={e => setEmail(e.target.value)}
+                        placeholder="Email address"
+                        required={true}
+                        roundedBorder="top"
+                        type="email"
+                        value={email}
                     />
                     <InputField
-                        id="password"
-                        name="password"
-                        type="password"
                         autoComplete="current-password"
-                        required={true}
+                        id="password"
                         label="Password"
-                        placeholder="Password"
-                        roundedBorder="bottom"
-                        value={password}
+                        name="password"
+                        onBlur={e => setPassword(e.target.value)}
                         onChange={e => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required={true}
+                        roundedBorder="bottom"
+                        type="password"
+                        value={password}
                     />
                 </Styled.InputContainer>
 
@@ -80,10 +82,10 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
                 </Styled.RememberMeContainer>
 
                 <Button
-                    type="submit"
-                    title="Sign in"
                     icon={faLock}
                     isLoading={loading}
+                    title="Sign in"
+                    type="submit"
                 />
                 {errors}
             </Form>
