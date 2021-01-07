@@ -6,6 +6,7 @@ export const FormHeader = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 1rem;
 `
 export const FormHeaderTitle = styled.h2`
     --text-opacity: 1;
