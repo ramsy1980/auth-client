@@ -6,6 +6,8 @@ import {
   Route,
 } from "react-router-dom";
 import { Login, Register, Profile } from './pages';
+import { AxiosHttpClient } from '../core/data';
+import { AuthenticationService } from '../core/infrastructure';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -15,21 +17,25 @@ const GlobalStyle = createGlobalStyle`
 `
 
 function App() {
+
+  const client = new AxiosHttpClient("http://localhost:3000");
+  const service = new AuthenticationService(client);
+
   return (
     <Router>
       <GlobalStyle />
       <Switch>
         <Route exact path="/">
-          <Login />
+          <Login service={service}/>
         </Route>
-        <Route path="/login">
-          <Login />
+        <Route exact path="/login">
+          <Login service={service} />
         </Route>
-        <Route path="/register">
-          <Register />
+        <Route exact path="/register">
+          <Register service={service}/>
         </Route>
-        <Route path="/profile">
-          <Profile />
+        <Route exact path="/profile">
+          <Profile service={service} />
         </Route>
       </Switch>
     </Router>
