@@ -8,7 +8,7 @@ export class AxiosHttpClient extends HttpClient {
         withCredentials: true
     }
 
-    async post<P>(path: string, payload: HttpClient.Post): Promise<HttpClient.DataError<P>> {
+    async post<P>(path: string, payload: HttpClient.Post): Promise<P> {
         return axios.post(
             path,
             payload.body,
@@ -19,7 +19,7 @@ export class AxiosHttpClient extends HttpClient {
         )
     }
 
-    async get<G>(path: string, payload?: HttpClient.Get): Promise<HttpClient.DataError<G>> {
+    async get<G>(path: string, payload?: HttpClient.Get): Promise<G> {
         return axios.get(
             path,
             {
@@ -29,7 +29,7 @@ export class AxiosHttpClient extends HttpClient {
         )
     }
 
-    async delete<D>(path: string, payload?: HttpClient.Delete): Promise<HttpClient.DataError<D>> {
+    async delete<D>(path: string, payload?: HttpClient.Delete): Promise<D> {
         return axios.delete(
             path,
             {
