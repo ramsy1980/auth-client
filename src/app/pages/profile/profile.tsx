@@ -13,7 +13,7 @@ export const Profile: FunctionComponent<ProfileProps> = (props) => {
 
     const history = useHistory();
 
-    const fetcher = () => service.currentUser().then((res) => res.data)
+    const fetcher = () => service.currentUser().then((res: any) => res.data)
 
     const { data, error } = useSWR('/api/user/currentUser', fetcher)
 
