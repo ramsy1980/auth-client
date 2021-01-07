@@ -19,7 +19,7 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
 
     const history = useHistory();
 
-    const { doRequest, errors, loading } = useRequest<AuthenticationService['login']>({
+    const { doRequest, errors, loading } = useRequest({
         request: () => service.login({ email, password }),
         onSuccess: () => {
             history.push('/profile')
@@ -85,8 +85,8 @@ export const Login: FunctionComponent<LoginProps> = (props) => {
                     icon={faLock}
                     isLoading={loading}
                 />
+                {errors}
             </Form>
-            {errors}
         </Container>
     )
 }

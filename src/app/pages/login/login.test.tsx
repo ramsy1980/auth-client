@@ -7,7 +7,9 @@ describe('Login', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(
-            <MemoryRouter><Login /></MemoryRouter>
+            <MemoryRouter>
+                <Login service={jest.fn() as any}/>
+            </MemoryRouter>
         , div);
         ReactDOM.unmountComponentAtNode(div);
     })
