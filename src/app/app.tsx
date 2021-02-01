@@ -8,6 +8,7 @@ import {
 import { Login, Register, Profile } from './pages';
 import { AxiosHttpClient } from '../core/data';
 import { AuthenticationService } from '../core/infrastructure';
+import { ThemeProvider } from './theme';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,23 +23,25 @@ function App() {
   const service = new AuthenticationService(client);
 
   return (
-    <Router>
-      <GlobalStyle />
-      <Switch>
-        <Route exact path="/">
-          <Login service={service}/>
-        </Route>
-        <Route exact path="/login">
-          <Login service={service} />
-        </Route>
-        <Route exact path="/register">
-          <Register service={service}/>
-        </Route>
-        <Route exact path="/profile">
-          <Profile service={service} />
-        </Route>
-      </Switch>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <GlobalStyle />
+        <Switch>
+          <Route exact path="/">
+            <Login service={service} />
+          </Route>
+          <Route exact path="/login">
+            <Login service={service} />
+          </Route>
+          <Route exact path="/register">
+            <Register service={service} />
+          </Route>
+          <Route exact path="/profile">
+            <Profile service={service} />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
